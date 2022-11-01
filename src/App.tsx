@@ -5,6 +5,7 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  console.log(import.meta.env);
 
   return (
     <div className="App">
@@ -28,6 +29,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <span>{ import.meta.env.VITE_API_URL }</span>
     </div>
   )
 }
