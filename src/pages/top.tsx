@@ -1,32 +1,49 @@
 import { FC } from 'react';
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormHelperText,
-} from '@chakra-ui/react';
+import { SlideFade, Flex, Box } from '@chakra-ui/react';
 import { H } from 'react-headings';
+import { Logo } from 'components/atoms/Logo';
+import { SongSearchConteiner } from 'components/organismus/SongSearchContainer';
 
 const Top: FC = () => {
   return (
-    <>
-      <H>Welcome to JAPAOKE</H>
-      <p>
-        This wep page is for singing Japanese songs.
+    <Flex
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      fontSize={['sm', 'md', 'md', 'xl']}
+    >
+      <Flex
+        padding="2em"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <SlideFade in={true} offsetY="10em">
+          <H>
+            <Logo />
+          </H>
+        </SlideFade>
+        <Box fontSize={['sm', 'md', 'md', 'xl']} fontWeight="bold">
+          let&apos;s get Romaj lyrics &#127925; &#127800;
+        </Box>
+      </Flex>
+
+      <Box minW="50%" maxW="800px" width="100%">
+        <SongSearchConteiner />
+      </Box>
+
+      <Box color="gray.500" fontSize="0.7em" padding="2em">
+        This wep page is made for helping non japanese mother tongue singing
+        Japanese songs.
         <br />
         Japanese has three writing systems.
         <br />
-        And it's difficult to read and sing a song if you get only lyrics in
-        Kanji.
+        Especially it&apos;s difficult to read Kanjis properly and sing a song
+        if you get only lyrics in Kanji.
         <br />
         So you can check Romaji lyrics of Japanese songs here.
-      </p>
-      <FormControl>
-        <FormLabel>keyword for searching songs</FormLabel>
-        <Input placeholder="title or artist" type="text" />
-        <FormHelperText></FormHelperText>
-      </FormControl>
-    </>
+      </Box>
+    </Flex>
   );
 };
 
