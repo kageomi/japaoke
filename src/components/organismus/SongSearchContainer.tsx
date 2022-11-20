@@ -38,38 +38,32 @@ const SongSearchConteiner: FC = () => {
     const controller = new AbortController();
     const { signal } = controller;
     const search = async () => {
-      setIsListVisible(false);
       setIsLoading(true);
-      try {
-        const response = await searchSongs({ word: keyword }, { signal });
-        console.log(response);
-        setSongList(response.payload.songs);
-        setIsListVisible(true);
-      } catch (error) {
-        if (!(error instanceof Error)) return;
-        if (error.name === 'AbortError') return;
-        // TODO: front end error
-      } finally {
-        setIsLoading(false);
-      }
+      setIsListVisible(false);
+      const response = await searchSongs({ word: keyword }, { signal });
+      setSongList(response.songs);
+      setIsListVisible(true);
+      setIsLoading(false);
     };
 
     const timer = setTimeout(search, DEBOUNCING_DELAY);
 
     return () => {
       clearTimeout(timer);
-      controller.abort();
+      controller.abort('search query is updated');
     };
   }, [keyword]);
 
   return (
-    <SongSearchFormControl
-      songList={songList}
-      isLoading={isLoading}
-      isListVisible={isListVisible}
-      inputProps={inputProps}
-      onClickSongItem={jumpToSongPage}
-    />
+    <>
+      <SongSearchFormControl
+        songList={songList}
+        isLoading={isLoading}
+        isListVisible={isListVisible}
+        inputProps={inputProps}
+        onClickSongItem={jumpToSongPage}
+      />
+    </>
   );
 };
 
