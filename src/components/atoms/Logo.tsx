@@ -10,7 +10,7 @@ const Logo = ({
   ...props
 }: Props & ChakraProps): ReactElement => {
   const fontSize = isSmall
-    ? ['xl', 'xl', 'xl', 'xl']
+    ? ['3xl', '3xl', '3xl', '3xl']
     : ['4xl', '6xl', '8xl', '8xl'];
 
   return (
