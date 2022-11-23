@@ -8,24 +8,25 @@ import {
   InputProps,
   FormControlProps,
 } from '@chakra-ui/react';
+import { useLockableToggle } from 'hooks/useLockableToggle';
 import { LoadingInput } from 'components/atoms/LoadingInput';
 
 type Props = {
   inputProps?: InputProps;
   itemList: ReactElement[];
   isLoading: boolean;
-  isListVisible: boolean;
 };
 
 const ListingSearchFormControl = ({
   inputProps,
   itemList,
   isLoading,
-  isListVisible,
   ...props
 }: Props & FormControlProps): ReactElement => {
+  const [isListVisible, { on, off, lock, unlock }] = useLockableToggle(false);
+
   return (
-    <FormControl padding="2em" {...props}>
+    <FormControl padding="2em" {...props} onFocus={on} onBlur={off}>
       <LoadingInput
         isLoading={isLoading}
         leftItem={<Search2Icon color="gray.200" />}
@@ -43,6 +44,8 @@ const ListingSearchFormControl = ({
             overflowY="scroll"
             bg="white"
             boxShadow="sm"
+            onMouseLeave={unlock}
+            onMouseEnter={lock}
           >
             {itemList.map((item, index) => (
               <ListItem

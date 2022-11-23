@@ -9,7 +9,6 @@ const DEBOUNCING_DELAY = 500;
 const SongSearchConteiner: FC = () => {
   const [keyword, setKeyword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isListVisible, setIsListVisible] = useState(false);
   const [songList, setSongList] = useState<Song[]>([]);
   const navigate = useNavigate();
 
@@ -39,10 +38,8 @@ const SongSearchConteiner: FC = () => {
     const { signal } = controller;
     const search = async () => {
       setIsLoading(true);
-      setIsListVisible(false);
       const response = await searchSongs({ word: keyword }, { signal });
       setSongList(response.songs);
-      setIsListVisible(true);
       setIsLoading(false);
     };
 
@@ -59,7 +56,6 @@ const SongSearchConteiner: FC = () => {
       <SongSearchFormControl
         songList={songList}
         isLoading={isLoading}
-        isListVisible={isListVisible}
         inputProps={inputProps}
         onClickSongItem={jumpToSongPage}
       />

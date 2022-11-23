@@ -8,7 +8,6 @@ type Props = {
   inputProps?: InputProps;
   songList: Song[];
   isLoading: boolean;
-  isListVisible: boolean;
   onClickSongItem: (songId: number, index: number) => void;
 };
 
