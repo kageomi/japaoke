@@ -6,12 +6,7 @@ import { SongSearchConteiner } from 'components/organismus/SongSearchContainer';
 
 const Top: FC = () => {
   return (
-    <Flex
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      fontSize={['sm', 'md', 'md', 'xl']}
-    >
+    <Flex flexDirection="column" alignItems="center" justifyContent="center">
       <Flex
         padding="2em"
         flexDirection="column"
