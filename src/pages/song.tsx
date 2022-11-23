@@ -1,11 +1,14 @@
 import { FC } from 'react';
-import { H } from 'react-headings';
+import { useParams } from 'react-router-dom';
+import { SongLyricsContainer } from 'components/organismus/SongLyricsContainer';
 
 const Song: FC = () => {
+  const { songId } = useParams();
+  if (songId == null) return <></>;
+
   return (
     <>
-      <H>Song Title</H>
-      <p>lyrics.</p>
+      <SongLyricsContainer songId={songId} />
     </>
   );
 };
