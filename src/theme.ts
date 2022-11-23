@@ -12,17 +12,26 @@ const theme = extendTheme({
     heading: `'Open Sans', sans-serif`,
     body: `'Raleway', sans-serif`,
   },
-  brand: {
-    50: '#7928CA',
-    100: '#7928CA',
-    200: '#7928CA',
-    300: '#7928CA',
-    400: '#7928CA',
-    500: '#7928CA',
-    600: '#7928CA',
-    700: '#7928CA',
-    800: '#7928CA',
-    900: '#7928CA',
+
+  colors: {
+    brand: {
+      50: '#fdf0f8',
+      100: '#fdddee',
+      200: '#fdcce6',
+      300: '#fdb2d9',
+      400: '#fd99cd',
+      500: '#fd85c3',
+      600: '#fd60b1',
+      700: '#fd40a1',
+      800: '#fd2393',
+      900: '#fd0181',
+    },
+    bg: {
+      root: {
+        base: '#fafafa',
+        highlight: 'white',
+      },
+    },
   },
 });
 

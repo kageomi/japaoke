@@ -43,13 +43,14 @@ const LoadingInput = ({
     )}
     <Input
       type="text"
-      focusBorderColor="rgba(237,220,255,1)"
+      focusBorderColor="brand.100"
+      backgroundColor="white"
       {...(isLoading ? gradient : {})}
       {...inputProps}
     />
     {!!isLoading && (
       <InputRightElement>
-        <Spinner color="#FF0080" opacity="0.5" />
+        <Spinner color="brand.500" opacity="0.5" />
       </InputRightElement>
     )}
   </InputGroup>
