@@ -1,6 +1,5 @@
-import Artist from './artist';
-import Favorite from './favorite';
-import Song from './song';
-import Top from './top';
+import NotFound from './NotFound';
+import Song from './Song';
+import Top from './Top';
 
-export { Top, Song, Artist, Favorite };
+export { Top, Song, NotFound };

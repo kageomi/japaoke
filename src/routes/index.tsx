@@ -1,11 +1,18 @@
-import { Artist, Top, Favorite, Song } from 'pages';
+import { Top, Song, NotFound } from 'pages';
 import { createBrowserRouter } from 'react-router-dom';
 import AppLayout from 'components/layout/AppLayout';
+import TopLayout from 'components/layout/TopLayout';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Top />,
+    element: <TopLayout />,
+    children: [
+      {
+        path: '',
+        element: <Top />,
+      },
+    ],
   },
   {
     path: '/',
@@ -16,12 +23,8 @@ const router = createBrowserRouter([
         element: <Song />,
       },
       {
-        path: 'artist/:artistId',
-        element: <Artist />,
-      },
-      {
-        path: 'favorite',
-        element: <Favorite />,
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },
