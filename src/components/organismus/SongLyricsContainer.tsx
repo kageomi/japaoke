@@ -26,7 +26,7 @@ const SongLyricsContainer: FC<Props> = ({ songId }) => {
     get();
   }, [songId]);
 
-  if (song == null) return <Text>This song doesn't exist!</Text>;
+  if (song == null) return <></>;
 
   return (
     <Flex
