@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-type UseLockableToggle = (defaultOn: boolean) => [
+type UseLockableToggle = (defaultOn?: boolean) => [
   boolean,
   {
     on: () => void;
@@ -10,7 +10,7 @@ type UseLockableToggle = (defaultOn: boolean) => [
   }
 ];
 
-const useLockableToggle: UseLockableToggle = (defaultOn) => {
+const useLockableToggle: UseLockableToggle = (defaultOn = false) => {
   const [isOn, setIsOn] = useState(defaultOn);
   const [isLocked, setIsLocked] = useState(false);
   const on = () => {
