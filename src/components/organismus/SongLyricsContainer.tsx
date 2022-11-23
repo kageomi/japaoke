@@ -22,14 +22,11 @@ const SongLyricsContainer: FC<Props> = ({ songId }) => {
       setSong(song);
       const { morphemes } = await getFurigana({ text: song.lyrics });
       setLyrics(morphemes);
-      console.log('setLyrics');
     };
     get();
   }, [songId]);
 
-  useEffect(() => console.log('songid'), [songId]);
-
-  if (song == null) return <></>;
+  if (song == null) return <Text>This song doesn't exist!</Text>;
 
   return (
     <Flex
