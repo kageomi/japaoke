@@ -3,7 +3,7 @@ import { getSong, getFurigana } from 'service/api';
 import { Morpheme } from 'types/Morphology';
 import Song from 'types/Song';
 
-type UseSongLyrics = (songId: string) => [
+type UseSongLyrics = (songId: string) => readonly [
   {
     song: Song | null;
     lyrics: Morpheme[];
