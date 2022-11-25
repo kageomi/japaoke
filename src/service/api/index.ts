@@ -1,8 +1,7 @@
 import KY from 'ky';
 import { toast } from 'react-toastify';
+import { API_URL } from 'settings';
 import { SearchSongsAPI, GetSongAPI, GetFuriganaAPI } from './types';
-
-const API_URL = import.meta.env.VITE_API_URL;
 
 const ky = KY.create({
   prefixUrl: API_URL,
