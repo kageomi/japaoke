@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { SlideFade, Flex, Box } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 import { H } from 'react-headings';
 import { Logo } from 'components/atoms/Logo';
 import { SongSearchConteiner } from 'components/organismus/SongSearchContainer';
