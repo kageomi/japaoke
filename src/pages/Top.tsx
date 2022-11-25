@@ -13,11 +13,9 @@ const Top: FC = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <SlideFade in={true} offsetY="10em">
-          <H>
-            <Logo />
-          </H>
-        </SlideFade>
+        <H>
+          <Logo />
+        </H>
         <Box fontSize={['sm', 'md', 'md', 'xl']} fontWeight="bold">
           let&apos;s get Romaj lyrics &#127925; &#127800;
         </Box>
