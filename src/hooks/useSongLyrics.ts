@@ -23,8 +23,7 @@ const useSongLyrics: UseSongLyrics = (songId) => {
       setLyrics(morphemes);
     };
 
-    // noinspection JSIgnoredPromiseFromCall
-    get();
+    void get();
 
     return () => controller.abort('song id has changed');
   }, [songId]);
