@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { SlideFade, Flex, Box } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 import { H } from 'react-headings';
 import { Logo } from 'components/atoms/Logo';
 import { SongSearchConteiner } from 'components/organismus/SongSearchContainer';
@@ -13,11 +13,9 @@ const Top: FC = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <SlideFade in={true} offsetY="10em">
-          <H>
-            <Logo />
-          </H>
-        </SlideFade>
+        <H>
+          <Logo />
+        </H>
         <Box fontSize={['sm', 'md', 'md', 'xl']} fontWeight="bold">
           let&apos;s get Romaj lyrics &#127925; &#127800;
         </Box>

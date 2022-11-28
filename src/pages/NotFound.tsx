@@ -16,7 +16,7 @@ const NotFound: FC = () => {
         <H>
           <Text fontSize="4em">404 Page not found :(</Text>
         </H>
-        <Text fontSize="2em">this page doesn't exsist!</Text>
+        <Text fontSize="2em">this page doesn&apos;t exsist!</Text>
       </Box>
     </Flex>
   );
