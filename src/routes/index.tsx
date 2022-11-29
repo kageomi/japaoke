@@ -4,6 +4,8 @@ import { ROUTER_BASENAME } from 'settings';
 import AppLayout from 'components/layout/AppLayout';
 import TopLayout from 'components/layout/TopLayout';
 
+console.log(ROUTER_BASENAME);
+
 const router = createBrowserRouter(
   [
     {
