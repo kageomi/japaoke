@@ -1,7 +1,7 @@
 import { Morpheme, Sentence } from 'types/Morphology';
 
-const getLyricsInSentences = (morphenes: Morpheme[]): Sentence[] => {
-  return morphenes.reduce<Sentence[]>(
+const getLyricsInSentences = (morphemes: Morpheme[]): Sentence[] => {
+  return morphemes.reduce<Sentence[]>(
     (sentences, morpheme) => {
       const lastSentence = sentences.slice(-1)[0];
       const lastClause = lastSentence.slice(-1)[0];
@@ -20,27 +20,25 @@ const getLyricsInSentences = (morphenes: Morpheme[]): Sentence[] => {
 };
 
 type MorphemeForDisplay = Morpheme & {
-  id: string;
   isClauseEnd: boolean;
 };
 
 type SentenceForDisplay = MorphemeForDisplay[];
 
 const getSentencesForDisplay = (
-  morphenes: Morpheme[]
+  morphemes: Morpheme[]
 ): SentenceForDisplay[] => {
-  const sentences = getLyricsInSentences(morphenes);
+  const sentences = getLyricsInSentences(morphemes);
 
   return sentences.reduce<SentenceForDisplay[]>((rows, sentence) => {
     return [
       ...rows,
-      sentence.reduce<MorphemeForDisplay[]>((morphemes, clause, rowIndex) => {
+      sentence.reduce<MorphemeForDisplay[]>((morphemes, clause) => {
         return [
           ...morphemes,
           ...clause.map((morpheme, index) => {
             return {
               ...morpheme,
-              id: `${morpheme.surface}-${index}-${rowIndex}`,
               isClauseEnd: clause.length - 1 === index,
             };
           }),
