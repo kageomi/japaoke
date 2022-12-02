@@ -1,45 +1,22 @@
-import KY from 'ky';
-import { toast } from 'react-toastify';
-import { API_URL } from 'settings';
+import { client } from './client';
 import { SearchSongsAPI, GetSongAPI, GetFuriganaAPI } from './types';
 
-const ky = KY.create({
-  prefixUrl: API_URL,
-  timeout: false,
-  retry: {
-    limit: 5,
-  },
-  hooks: {
-    afterResponse: [
-      (_request, _options, response) => {
-        if (!response.ok) {
-          toast.error(`Something is wrong: ${response.status}`, {
-            hideProgressBar: true,
-            autoClose: 10000,
-            theme: 'dark',
-          });
-        }
-      },
-    ],
-  },
-});
-
 const searchSongs: SearchSongsAPI = async ({ word }, options = {}) => {
-  return await ky('song/search', {
+  return await client('song/search', {
     searchParams: { word },
     ...options,
   }).json();
 };
 
 const getSong: GetSongAPI = async ({ id }, options = {}) => {
-  return await ky('song/get', {
+  return await client('song/get', {
     searchParams: { id },
     ...options,
   }).json();
 };
 
 const getFurigana: GetFuriganaAPI = async ({ text }, options = {}) => {
-  return await ky
+  return await client
     .post('furigana', {
       json: { text },
       ...options,
