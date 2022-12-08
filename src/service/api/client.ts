@@ -1,13 +1,13 @@
 import axios, { AxiosError } from 'axios';
 import axiosRetry from 'axios-retry';
 import { toast } from 'react-toastify';
-import { API_URL } from 'settings';
+import { API_ENDPOINTS, API_SETTINGS } from 'settings';
 
-const RETRY_COUNT = 5;
-const RETRY_DELAY = 100;
+const BASE_URL = API_ENDPOINTS.BASE;
+const { RETRY_COUNT, RETRY_DELAY } = API_SETTINGS;
 
 const client = axios.create({
-  baseURL: API_URL,
+  baseURL: BASE_URL,
 });
 
 axiosRetry(client, { retries: RETRY_COUNT, retryDelay: () => RETRY_DELAY });

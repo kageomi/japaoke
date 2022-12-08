@@ -1,3 +1,4 @@
+import { API_ENDPOINTS } from 'settings';
 import { client } from './client';
 import {
   SearchSongsAPI,
@@ -8,9 +9,11 @@ import {
   GetFuriganaAPIResponse,
 } from './types';
 
+const { SONG_SEARCH, SONG_GET, FURIGANA } = API_ENDPOINTS;
+
 const searchSongs: SearchSongsAPI = async ({ word }, options = {}) => {
   return (
-    await client.get<SearchSongsAPIResponse>('song/search', {
+    await client.get<SearchSongsAPIResponse>(SONG_SEARCH, {
       params: { word },
       ...options,
     })
@@ -19,7 +22,7 @@ const searchSongs: SearchSongsAPI = async ({ word }, options = {}) => {
 
 const getSong: GetSongAPI = async ({ id }, options = {}) => {
   return (
-    await client.get<GetSongAPIResponse>('song/get', {
+    await client.get<GetSongAPIResponse>(SONG_GET, {
       params: { id },
       ...options,
     })
@@ -28,7 +31,7 @@ const getSong: GetSongAPI = async ({ id }, options = {}) => {
 
 const getFurigana: GetFuriganaAPI = async ({ text }, options = {}) => {
   return (
-    await client.post<GetFuriganaAPIResponse>('furigana', {
+    await client.post<GetFuriganaAPIResponse>(FURIGANA, {
       text,
       ...options,
     })
