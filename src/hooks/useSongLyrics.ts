@@ -17,10 +17,14 @@ const useSongLyrics: UseSongLyrics = (songId) => {
     const controller = new AbortController();
     const { signal } = controller;
     const get = async () => {
-      const { song } = await getSong({ id: songId }, { signal });
-      setSong(song);
-      const { morphemes } = await getFurigana({ text: song.lyrics });
-      setLyrics(morphemes);
+      try {
+        const { song } = await getSong({ id: songId }, { signal });
+        setSong(song);
+        const { morphemes } = await getFurigana({ text: song.lyrics });
+        setLyrics(morphemes);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     void get();
