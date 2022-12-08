@@ -1,27 +1,38 @@
 import { client } from './client';
-import { SearchSongsAPI, GetSongAPI, GetFuriganaAPI } from './types';
+import {
+  SearchSongsAPI,
+  SearchSongsAPIResponse,
+  GetSongAPI,
+  GetSongAPIResponse,
+  GetFuriganaAPI,
+  GetFuriganaAPIResponse,
+} from './types';
 
 const searchSongs: SearchSongsAPI = async ({ word }, options = {}) => {
-  return await client('song/search', {
-    searchParams: { word },
-    ...options,
-  }).json();
+  return (
+    await client.get<SearchSongsAPIResponse>('song/search', {
+      params: { word },
+      ...options,
+    })
+  ).data;
 };
 
 const getSong: GetSongAPI = async ({ id }, options = {}) => {
-  return await client('song/get', {
-    searchParams: { id },
-    ...options,
-  }).json();
+  return (
+    await client.get<GetSongAPIResponse>('song/get', {
+      params: { id },
+      ...options,
+    })
+  ).data;
 };
 
 const getFurigana: GetFuriganaAPI = async ({ text }, options = {}) => {
-  return await client
-    .post('furigana', {
-      json: { text },
+  return (
+    await client.post<GetFuriganaAPIResponse>('furigana', {
+      text,
       ...options,
     })
-    .json();
+  ).data;
 };
 
 export { searchSongs, getSong, getFurigana };
