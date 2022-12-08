@@ -17,9 +17,9 @@ const AlternatelyLyrics: FC<Props & FlexProps> = memo(
 
       return (
         <Flex flexWrap="wrap" key={index}>
-          {sentence.map((morpheme) => (
+          {sentence.map((morpheme, mIndex) => (
             <MorphemeText
-              key={morpheme.id}
+              key={`${morpheme.surface}-${index}-${mIndex}`}
               morpheme={morpheme}
               minWidth={`${morpheme.surface.length}em`}
               marginRight={morpheme.isClauseEnd ? '2em' : '0.5em'}

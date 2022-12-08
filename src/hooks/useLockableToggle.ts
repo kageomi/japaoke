@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-type UseLockableToggle = (defaultOn?: boolean) => [
+type UseLockableToggle = (defaultOn?: boolean) => readonly [
   boolean,
   {
     on: () => void;

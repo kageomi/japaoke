@@ -1,50 +1,46 @@
-import KY from 'ky';
-import { toast } from 'react-toastify';
-import { API_URL } from 'settings';
-import { SearchSongsAPI, GetSongAPI, GetFuriganaAPI } from './types';
+import { API_ENDPOINTS } from 'settings';
+import { client } from './client';
+import {
+  SearchSongsAPI,
+  SearchSongsAPIResponse,
+  GetSongAPI,
+  GetSongAPIResponse,
+  GetFuriganaAPI,
+  GetFuriganaAPIResponse,
+} from './types';
 
-const ky = KY.create({
-  prefixUrl: API_URL,
-  timeout: false,
-  retry: {
-    limit: 5,
-  },
-  hooks: {
-    afterResponse: [
-      (_request, _options, response) => {
-        if (!response.ok) {
-          toast.error(`Something is wrong: ${response.status}`, {
-            hideProgressBar: true,
-            autoClose: 10000,
-            theme: 'dark',
-          });
-        }
-      },
-    ],
-  },
-});
+const { WAKEUP, SONG_SEARCH, SONG_GET, FURIGANA } = API_ENDPOINTS;
+
+const wakeUpAPIServer = (): void => {
+  // wake up glitch API server
+  void client.get(WAKEUP);
+};
 
 const searchSongs: SearchSongsAPI = async ({ word }, options = {}) => {
-  return await ky('song/search', {
-    searchParams: { word },
-    ...options,
-  }).json();
+  return (
+    await client.get<SearchSongsAPIResponse>(SONG_SEARCH, {
+      params: { word },
+      ...options,
+    })
+  ).data;
 };
 
 const getSong: GetSongAPI = async ({ id }, options = {}) => {
-  return await ky('song/get', {
-    searchParams: { id },
-    ...options,
-  }).json();
+  return (
+    await client.get<GetSongAPIResponse>(SONG_GET, {
+      params: { id },
+      ...options,
+    })
+  ).data;
 };
 
 const getFurigana: GetFuriganaAPI = async ({ text }, options = {}) => {
-  return await ky
-    .post('furigana', {
-      json: { text },
+  return (
+    await client.post<GetFuriganaAPIResponse>(FURIGANA, {
+      text,
       ...options,
     })
-    .json();
+  ).data;
 };
 
-export { searchSongs, getSong, getFurigana };
+export { wakeUpAPIServer, searchSongs, getSong, getFurigana };
