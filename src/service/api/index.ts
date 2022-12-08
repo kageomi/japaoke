@@ -9,7 +9,12 @@ import {
   GetFuriganaAPIResponse,
 } from './types';
 
-const { SONG_SEARCH, SONG_GET, FURIGANA } = API_ENDPOINTS;
+const { WAKEUP, SONG_SEARCH, SONG_GET, FURIGANA } = API_ENDPOINTS;
+
+const wakeUpAPIServer = (): void => {
+  // wake up glitch API server
+  void client.get(WAKEUP);
+};
 
 const searchSongs: SearchSongsAPI = async ({ word }, options = {}) => {
   return (
@@ -38,4 +43,4 @@ const getFurigana: GetFuriganaAPI = async ({ text }, options = {}) => {
   ).data;
 };
 
-export { searchSongs, getSong, getFurigana };
+export { wakeUpAPIServer, searchSongs, getSong, getFurigana };

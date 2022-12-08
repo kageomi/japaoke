@@ -1,5 +1,6 @@
 const API_ENDPOINTS = {
   BASE: import.meta.env.VITE_API_URL,
+  WAKEUP: 'wakeup',
   SONG_SEARCH: 'song/search',
   SONG_GET: 'song/get',
   FURIGANA: 'furigana',
