@@ -1,8 +1,5 @@
-import { Morpheme } from '../../types/Morphology';
-import {
-  getLyricsInSentences,
-  getSentencesForDisplay,
-} from '../../util/lyrics';
+import { Morpheme } from 'types/Morphology';
+import { getLyricsInSentences, getSentencesForDisplay } from 'util/lyrics';
 
 describe('getLyricsInSentences', () => {
   test('should return 3 dimensional empty array', () => {

@@ -30,10 +30,15 @@ const useSongSearch: UseSongSearch = (defaultKeyword = '') => {
     const controller = new AbortController();
     const { signal } = controller;
     const search = async () => {
-      setIsLoading(true);
-      const response = await searchSongs({ word: keyword }, { signal });
-      setSongList(response.songs);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const response = await searchSongs({ word: keyword }, { signal });
+        setSongList(response.songs);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     const timer = setTimeout(search, DEBOUNCING_DELAY);

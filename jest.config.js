@@ -5,4 +5,6 @@ export default {
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
+  transformIgnorePatterns: ['node_modules/(?!troublesome-dependency/.*)'],
+  moduleDirectories: ['node_modules', 'src'],
 };
