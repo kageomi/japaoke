@@ -1,46 +1,6 @@
-import { API_ENDPOINTS } from 'settings';
-import { client } from './client';
-import {
-  SearchSongsAPI,
-  SearchSongsAPIResponse,
-  GetSongAPI,
-  GetSongAPIResponse,
-  GetFuriganaAPI,
-  GetFuriganaAPIResponse,
-} from './types';
-
-const { WAKEUP, SONG_SEARCH, SONG_GET, FURIGANA } = API_ENDPOINTS;
-
-const wakeUpAPIServer = (): void => {
-  // wake up glitch API server
-  void client.get(WAKEUP);
-};
-
-const searchSongs: SearchSongsAPI = async ({ word }, options = {}) => {
-  return (
-    await client.get<SearchSongsAPIResponse>(SONG_SEARCH, {
-      params: { word },
-      ...options,
-    })
-  ).data;
-};
-
-const getSong: GetSongAPI = async ({ id }, options = {}) => {
-  return (
-    await client.get<GetSongAPIResponse>(SONG_GET, {
-      params: { id },
-      ...options,
-    })
-  ).data;
-};
-
-const getFurigana: GetFuriganaAPI = async ({ text }, options = {}) => {
-  return (
-    await client.post<GetFuriganaAPIResponse>(FURIGANA, {
-      text,
-      ...options,
-    })
-  ).data;
-};
+import { getFurigana } from './getFurigana';
+import { getSong } from './getSong';
+import { searchSongs } from './searchSongs';
+import { wakeUpAPIServer } from './wakeUpAPIServer';
 
 export { wakeUpAPIServer, searchSongs, getSong, getFurigana };

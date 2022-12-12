@@ -1,5 +1,5 @@
 const API_ENDPOINTS = {
-  BASE: import.meta.env.VITE_API_URL,
+  BASE: process.env.VITE_API_URL,
   WAKEUP: 'wakeup',
   SONG_SEARCH: 'song/search',
   SONG_GET: 'song/get',
@@ -9,7 +9,7 @@ const API_SETTINGS = {
   RETRY_COUNT: 5,
   RETRY_DELAY: 100,
 };
-const ROUTER_BASENAME = import.meta.env.VITE_ROUTER_BASENAME;
+const ROUTER_BASENAME = process.env.VITE_ROUTER_BASENAME;
 const GENIUS_URL = 'https://docs.genius.com/';
 const YAHOO_URL =
   'https://developer.yahoo.co.jp/webapi/jlp/furigana/v2/furigana.html';

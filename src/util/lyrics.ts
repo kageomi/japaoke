@@ -48,4 +48,4 @@ const getSentencesForDisplay = (
   }, []);
 };
 
-export { getSentencesForDisplay };
+export { getLyricsInSentences, getSentencesForDisplay };
