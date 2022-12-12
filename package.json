@@ -17,7 +17,7 @@
     "fix": "npm run --silent format; npm run --silent lint:fix",
     "prepare": "npx simple-git-hooks || :",
     "preinstall": "npx typesync || :",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.11",
@@ -29,6 +29,7 @@
     "axios": "^1.2.0",
     "axios-retry": "^3.3.1",
     "framer-motion": "^7.6.4",
+    "jest-environment-jsdom": "^29.3.1",
     "ky": "^0.32.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
