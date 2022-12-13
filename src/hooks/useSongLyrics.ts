@@ -7,6 +7,7 @@ type UseSongLyrics = (songId: string) => readonly [
   {
     song: Song | null;
     lyrics: Morpheme[];
+    isLoading: boolean;
   }
 ];
 
