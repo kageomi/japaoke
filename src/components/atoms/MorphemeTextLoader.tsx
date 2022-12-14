@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Box, BoxProps, SkeletonText } from '@chakra-ui/react';
-import { SKELTON_OPTIONS } from 'settings';
+import { SKELETON_OPTIONS } from 'settings';
 
 const MorphemeTextLoader: FC<BoxProps> = (props) => {
   return (
@@ -16,14 +16,14 @@ const MorphemeTextLoader: FC<BoxProps> = (props) => {
         noOfLines={1}
         skeletonHeight="1em"
         width="100%"
-        {...SKELTON_OPTIONS}
+        {...SKELETON_OPTIONS}
       />
       <SkeletonText
         mt="0.5em"
         noOfLines={1}
         skeletonHeight="0.5em"
         width="100%"
-        {...SKELTON_OPTIONS}
+        {...SKELETON_OPTIONS}
       />
     </Box>
   );
