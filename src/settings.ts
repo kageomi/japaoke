@@ -14,6 +14,11 @@ const GENIUS_URL = 'https://docs.genius.com/';
 const YAHOO_URL =
   'https://developer.yahoo.co.jp/webapi/jlp/furigana/v2/furigana.html';
 const GITHUB_URL = 'https://github.com/kageomi';
+const SKELTON_OPTIONS = {
+  startColor: 'gray.300',
+  endColor: 'gray.100',
+  speed: 1,
+};
 
 export {
   API_ENDPOINTS,
@@ -22,4 +27,5 @@ export {
   YAHOO_URL,
   GITHUB_URL,
   ROUTER_BASENAME,
+  SKELTON_OPTIONS,
 };
