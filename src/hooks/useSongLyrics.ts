@@ -7,16 +7,19 @@ type UseSongLyrics = (songId: string) => readonly [
   {
     song: Song | null;
     lyrics: Morpheme[];
+    isLoading: boolean;
   }
 ];
 
 const useSongLyrics: UseSongLyrics = (songId) => {
   const [song, setSong] = useState<Song | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [lyrics, setLyrics] = useState<Morpheme[]>([]);
   useEffect(() => {
     const controller = new AbortController();
     const { signal } = controller;
     const get = async () => {
+      setIsLoading(true);
       try {
         const { song } = await getSong({ id: songId }, { signal });
         setSong(song);
@@ -24,6 +27,8 @@ const useSongLyrics: UseSongLyrics = (songId) => {
         setLyrics(morphemes);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -32,7 +37,7 @@ const useSongLyrics: UseSongLyrics = (songId) => {
     return () => controller.abort('song id has changed');
   }, [songId]);
 
-  return [{ song, lyrics }];
+  return [{ song, lyrics, isLoading }];
 };
 
 export { useSongLyrics };
