@@ -19,8 +19,8 @@ const MorphemeText = ({
       gap="0.1em"
       {...props}
     >
-      <Text color="gray.400">{morpheme.surface}</Text>
-      <Text fontSize="sm">{morpheme.roman}</Text>
+      <Text color="gray.400">{morpheme?.surface}</Text>
+      <Text fontSize="sm">{morpheme?.roman}</Text>
     </Box>
   );
 };
