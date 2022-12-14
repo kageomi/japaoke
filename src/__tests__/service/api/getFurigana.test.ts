@@ -8,11 +8,12 @@ afterEach(() => {
 });
 
 describe('getFurigana', () => {
+  const query = { text: 'test' };
+
   test('should access correct endpoint', async () => {
     const { FURIGANA } = API_ENDPOINTS;
     const endpoint = FURIGANA;
 
-    const query = { text: 'test' };
     const response = {
       morphemes: [...Array(100)].map(() => createRandomMorpheme()),
     };
@@ -24,5 +25,66 @@ describe('getFurigana', () => {
       ...query,
     });
     expect(data).toEqual(response);
+  });
+
+  test('should be error by wrong response. response is empty object', async () => {
+    const response = {};
+
+    mockAxios.create().post.mockResolvedValue({ data: response });
+    const promise = getFurigana(query);
+
+    expect(mockAxios.create().post).toHaveBeenCalled();
+    expect(promise).rejects.toThrow();
+  });
+
+  test('should be error by wrong response. response dose not have morphemes', async () => {
+    const response = {
+      items: [...Array(100)].map(() => createRandomMorpheme()),
+    };
+
+    mockAxios.create().post.mockResolvedValue({ data: response });
+    const promise = getFurigana(query);
+
+    expect(mockAxios.create().post).toHaveBeenCalled();
+    expect(promise).rejects.toThrow();
+  });
+
+  test('should be error by wrong response. morphemes does not have enough properties', async () => {
+    const response = {
+      morphemes: [...Array(100)].map(() => ({})),
+    };
+
+    mockAxios.create().post.mockResolvedValue({ data: response });
+    const promise = getFurigana(query);
+
+    expect(mockAxios.create().post).toHaveBeenCalled();
+    expect(promise).rejects.toThrow();
+  });
+
+  test('should be error by wrong response. morphemes have extra property', async () => {
+    const response = {
+      morphemes: [...Array(100)].map(() => ({
+        ...createRandomMorpheme(),
+        extra: 'hogehoge',
+      })),
+    };
+
+    mockAxios.create().post.mockResolvedValue({ data: response });
+    const promise = getFurigana(query);
+
+    expect(mockAxios.create().post).toHaveBeenCalled();
+    expect(promise).rejects.toThrow();
+  });
+
+  test('should be error by wrong response. morphemes is empty object', async () => {
+    const response = {
+      morphemes: {},
+    };
+
+    mockAxios.create().post.mockResolvedValue({ data: response });
+    const promise = getFurigana(query);
+
+    expect(mockAxios.create().post).toHaveBeenCalled();
+    expect(promise).rejects.toThrow();
   });
 });

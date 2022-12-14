@@ -7,7 +7,7 @@ const createRandomSongHeader = (): SongHeader => {
     title: faker.music.songName(),
     artistNames: faker.name.fullName(),
     songArtImageThumbnailUrl: faker.image.avatar(),
-    artistId: parseInt(faker.random.numeric(5)),
+    path: faker.internet.url(),
   };
 };
 
