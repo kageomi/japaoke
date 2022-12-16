@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     name: Build
+    env:
+      VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      VITE_ROUTER_BASENAME: ${{ secrets.VITE_ROUTER_BASENAME }}
     runs-on: ubuntu-latest
 
     steps:
@@ -24,8 +27,17 @@ jobs:
 
       - name: create .env file
         run: |
-          echo "${{ secrets.ENV_FILE }}" >> .env.production.local
+          echo ${{ secrets.ENV_FILE }} >> .env.production.local
+          echo "---env---"
           cat .env.production.local
+          echo "---env---"
+
+      - name: show env
+        run: |
+          echo "---env---"
+          echo " - ${ VITE_API_URL }"
+          echo " - ${ VITE_ROUTER_BASENAME }"
+          echo "---env---"
 
       - name: Build project
         run: npm run build
