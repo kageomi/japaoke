@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 import { InputProps } from '@chakra-ui/react';
 import IconCard from 'components/atoms/IconCard';
-import type Song from 'types/Song';
+import type SongHeader from 'types/SongHeader';
 import { ListingSearchFormControl } from './ListingSearchFormControl';
 
 type Props = {
   inputProps?: InputProps;
-  songList: Song[];
+  songList: SongHeader[];
   isLoading: boolean;
   onClickSongItem: (songId: number, index: number) => void;
 };
