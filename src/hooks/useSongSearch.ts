@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { searchSongs } from 'service/api';
-import Song from 'types/Song';
+import SongHeader from 'types/SongHeader';
 
 const DEBOUNCING_DELAY = 500;
 
@@ -8,7 +8,7 @@ type UseSongSearch = (defaultKeyword?: string) => readonly [
   {
     keyword: string;
     isLoading: boolean;
-    songList: Song[];
+    songList: SongHeader[];
   },
   {
     setKeyword: React.Dispatch<React.SetStateAction<string>>;
@@ -18,7 +18,7 @@ type UseSongSearch = (defaultKeyword?: string) => readonly [
 const useSongSearch: UseSongSearch = (defaultKeyword = '') => {
   const [keyword, setKeyword] = useState(defaultKeyword);
   const [isLoading, setIsLoading] = useState(false);
-  const [songList, setSongList] = useState<Song[]>([]);
+  const [songList, setSongList] = useState<SongHeader[]>([]);
 
   useEffect(() => {
     if (!keyword) {
