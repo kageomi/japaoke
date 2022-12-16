@@ -4,8 +4,8 @@ import { ROUTER_BASENAME, API_ENDPOINTS } from 'settings';
 import AppLayout from 'components/layout/AppLayout';
 import TopLayout from 'components/layout/TopLayout';
 
-console.log('ROUTER_BASENAME-', ROUTER_BASENAME);
-console.log('API_ENDPOINTS-', API_ENDPOINTS);
+console.log('ROUTER_BASENAME', ROUTER_BASENAME);
+console.log('API_ENDPOINTS', API_ENDPOINTS);
 
 const router = createBrowserRouter(
   [

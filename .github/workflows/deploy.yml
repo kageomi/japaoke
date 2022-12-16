@@ -32,13 +32,6 @@ jobs:
           cat .env.production.local
           echo "---env---"
 
-      - name: show env
-        run: |
-          echo "---env---"
-          echo " - ${ VITE_API_URL }"
-          echo " - ${ VITE_ROUTER_BASENAME }"
-          echo "---env---"
-
       - name: Build project
         run: npm run build
 
