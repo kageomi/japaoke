@@ -25,13 +25,6 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-      - name: create .env file
-        run: |
-          echo ${{ secrets.ENV_FILE }} >> .env.production.local
-          echo "---env---"
-          cat .env.production.local
-          echo "---env---"
-
       - name: Build project
         run: npm run build
 
