@@ -90,5 +90,6 @@
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
-  }
+  },
+  "homepage": "https://kageomi.github.io/japaoke/#"
 }
