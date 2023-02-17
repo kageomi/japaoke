@@ -11,7 +11,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
   if (command === 'build') {
     return {
       ...config,
-      base: '/japaoke/',
+      base: '/japaoke/#',
     };
   }
   return config;
