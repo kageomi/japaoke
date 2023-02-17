@@ -1,10 +1,10 @@
 import { Top, Song, NotFound } from 'pages';
-import { createHashRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import { ROUTER_BASENAME } from 'settings';
 import AppLayout from 'components/layout/AppLayout';
 import TopLayout from 'components/layout/TopLayout';
 
-const router = createHashRouter(
+const router = createBrowserRouter(
   [
     {
       path: '/',
